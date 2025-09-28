@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Calculator - Free Tip and Bill Split Calculator</title>
+    <meta name="description" content="Free tip calculator to calculate tips and split bills. Easy-to-use tool for restaurants, delivery, and service situations. Calculate tips by percentage or amount.">
+    <meta name="keywords" content="tip calculator, bill split calculator, restaurant tip, delivery tip, service tip, gratuity calculator">
+    <meta name="robots" content="index, follow">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #212529;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .calculator-container {
+            background-color: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 16px;
+        }
+        .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }
+        .btn-calculate {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 500;
+            width: 100%;
+        }
+        .btn-calculate:hover {
+            background-color: #0b5ed7;
+            border-color: #0a58ca;
+        }
+        .tip-percentage-btn {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            color: #495057;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tip-percentage-btn:hover {
+            background-color: #e9ecef;
+        }
+        .tip-percentage-btn.active {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+            color: white;
+        }
+        .result-box {
+            background-color: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .result-summary {
+            background-color: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 5px 0;
+        }
+        .result-row:last-child {
+            margin-bottom: 0;
+            border-top: 2px solid #dee2e6;
+            padding-top: 10px;
+            font-weight: bold;
+        }
+        .nav-links {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .currency-symbol {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+            font-weight: 500;
+        }
+        .currency-input {
+            padding-left: 35px;
+        }
+        .input-group-currency {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <!-- Navigation Links -->
+        <div class="nav-links">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h5 class="mb-0">Simple Calculators</h5>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../index.html" class="btn btn-outline-primary btn-sm me-2">Home</a>
+                    <a href="../percentage-calculator/index.html" class="btn btn-outline-secondary btn-sm me-2">Percentage Calculator</a>
+                    <a href="../bmi-calculator/index.html" class="btn btn-outline-secondary btn-sm">BMI Calculator</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="text-center mb-4">Tip Calculator</h1>
+                <p class="text-center text-muted mb-4">Calculate tips and split bills easily for restaurants, delivery, and service situations</p>
+
+                <div class="calculator-container">
+                    <form id="tipForm">
+                        <!-- Bill Amount -->
+                        <div class="mb-4">
+                            <label for="billAmount" class="form-label">Bill Amount</label>
+                            <div class="input-group-currency">
+                                <span class="currency-symbol">$</span>
+                                <input type="number" class="form-control currency-input" id="billAmount" placeholder="0.00" step="0.01" min="0">
+                            </div>
+                        </div>
+
+                        <!-- Tip Percentage -->
+                        <div class="mb-4">
+                            <label class="form-label">Tip Percentage</label>
+                            <div class="d-flex flex-wrap justify-content-center mb-3">
+                                <button type="button" class="btn tip-percentage-btn" data-tip="10">10%</button>
+                                <button type="button" class="btn tip-percentage-btn" data-tip="15">15%</button>
+                                <button type="button" class="btn tip-percentage-btn active" data-tip="18">18%</button>
+                                <button type="button" class="btn tip-percentage-btn" data-tip="20">20%</button>
+                                <button type="button" class="btn tip-percentage-btn" data-tip="25">25%</button>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="customTipPercent" class="form-label">Custom Tip (%)</label>
+                                    <input type="number" class="form-control" id="customTipPercent" placeholder="Enter custom %" step="0.1" min="0">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="customTipAmount" class="form-label">Custom Tip Amount ($)</label>
+                                    <div class="input-group-currency">
+                                        <span class="currency-symbol">$</span>
+                                        <input type="number" class="form-control currency-input" id="customTipAmount" placeholder="0.00" step="0.01" min="0">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Number of People -->
+                        <div class="mb-4">
+                            <label for="numberOfPeople" class="form-label">Number of People</label>
+                            <input type="number" class="form-control" id="numberOfPeople" placeholder="1" min="1" value="1">
+                        </div>
+
+                        <button type="button" class="btn btn-calculate" onclick="calculateTip()">Calculate Tip</button>
+                    </form>
+
+                    <div id="tipResult" class="result-box" style="display: none;">
+                        <h4 class="mb-3 text-center">Calculation Results</h4>
+
+                        <div class="result-summary">
+                            <div class="result-row">
+                                <span>Bill Amount:</span>
+                                <span id="resultBillAmount">$0.00</span>
+                            </div>
+                            <div class="result-row">
+                                <span>Tip Amount:</span>
+                                <span id="resultTipAmount">$0.00</span>
+                            </div>
+                            <div class="result-row">
+                                <span>Total Amount:</span>
+                                <span id="resultTotalAmount">$0.00</span>
+                            </div>
+                        </div>
+
+                        <div id="splitResult" style="display: none;">
+                            <h5 class="mt-4 mb-3">Split Between <span id="splitPeople">1</span> People</h5>
+                            <div class="result-summary">
+                                <div class="result-row">
+                                    <span>Bill per Person:</span>
+                                    <span id="resultBillPerPerson">$0.00</span>
+                                </div>
+                                <div class="result-row">
+                                    <span>Tip per Person:</span>
+                                    <span id="resultTipPerPerson">$0.00</span>
+                                </div>
+                                <div class="result-row">
+                                    <span>Total per Person:</span>
+                                    <span id="resultTotalPerPerson">$0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Tip Guide -->
+                <div class="calculator-container">
+                    <h3 class="h5 mb-3 text-center">Quick Tip Guide</h3>
+                    <div class="row text-center">
+                        <div class="col-md-3 mb-3">
+                            <div class="p-3 bg-light rounded">
+                                <strong>Poor Service</strong><br>
+                                <span class="text-muted">10-12%</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="p-3 bg-light rounded">
+                                <strong>Average Service</strong><br>
+                                <span class="text-muted">15-18%</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="p-3 bg-light rounded">
+                                <strong>Good Service</strong><br>
+                                <span class="text-muted">18-20%</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="p-3 bg-light rounded">
+                                <strong>Excellent Service</strong><br>
+                                <span class="text-muted">20-25%+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO Content -->
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-10">
+                <div class="bg-light p-5 rounded-3">
+                    <h2 class="h3 mb-4">How to Use the Tip Calculator</h2>
+
+                    <p>Our free tip calculator makes it easy to calculate the perfect tip amount and split bills among multiple people. Whether you're dining at a restaurant, ordering delivery, or receiving any service, this tool helps ensure you tip appropriately and divide costs fairly.</p>
+
+                    <h3 class="h5 mt-4 mb-3">Step-by-Step Instructions</h3>
+
+                    <h4 class="h6 mt-3 mb-2">Basic Tip Calculation</h4>
+                    <ol>
+                        <li><strong>Enter the bill amount:</strong> Input the total cost of your meal or service before tip</li>
+                        <li><strong>Select tip percentage:</strong> Choose from the preset percentages (10%, 15%, 18%, 20%, 25%) or enter a custom percentage</li>
+                        <li><strong>Set number of people:</strong> Enter how many people are splitting the bill (default is 1)</li>
+                        <li><strong>Calculate:</strong> Click "Calculate Tip" to see your results</li>
+                    </ol>
+
+                    <h4 class="h6 mt-3 mb-2">Custom Tip Options</h4>
+                    <p>You have two ways to customize your tip:</p>
+                    <ul>
+                        <li><strong>Custom Tip Percentage:</strong> Enter any percentage you prefer</li>
+                        <li><strong>Custom Tip Amount:</strong> Enter a specific dollar amount for your tip</li>
+                    </ul>
+
+                    <h3 class="h5 mt-4 mb-3">Understanding Your Results</h3>
+
+                    <p>The calculator provides comprehensive results showing:</p>
+                    <ul>
+                        <li><strong>Bill Amount:</strong> Your original bill before tip</li>
+                        <li><strong>Tip Amount:</strong> The calculated tip based on your percentage or custom amount</li>
+                        <li><strong>Total Amount:</strong> Bill plus tip - what you'll pay in total</li>
+                    </ul>
+
+                    <p>When splitting among multiple people, you'll also see:</p>
+                    <ul>
+                        <li><strong>Bill per Person:</strong> Each person's share of the original bill</li>
+                        <li><strong>Tip per Person:</strong> Each person's share of the tip</li>
+                        <li><strong>Total per Person:</strong> What each person should pay (bill + tip)</li>
+                    </ul>
+
+                    <h3 class="h5 mt-4 mb-3">Tipping Guidelines and Etiquette</h3>
+
+                    <h4 class="h6 mt-3 mb-2">Restaurant Tipping Standards</h4>
+                    <ul>
+                        <li><strong>Full-service restaurants:</strong> 18-20% for good service, 15% for average service</li>
+                        <li><strong>Fine dining:</strong> 20-25% is appropriate for exceptional service</li>
+                        <li><strong>Buffet restaurants:</strong> 10-15% as servers do less table service</li>
+                        <li><strong>Counter service:</strong> $1-2 or 10-15% for made-to-order items</li>
+                    </ul>
+
+                    <h4 class="h6 mt-3 mb-2">Delivery and Takeout</h4>
+                    <ul>
+                        <li><strong>Food delivery:</strong> 15-20% of the order total, minimum $3-5</li>
+                        <li><strong>Pizza delivery:</strong> $2-5 per order or 15-20%</li>
+                        <li><strong>Takeout orders:</strong> 10-15% for complex orders, especially during busy times</li>
+                        <li><strong>Curbside pickup:</strong> $1-2 or 5-10% for the convenience</li>
+                    </ul>
+
+                    <h4 class="h6 mt-3 mb-2">Other Service Industries</h4>
+                    <ul>
+                        <li><strong>Hair salons:</strong> 15-20% for your stylist</li>
+                        <li><strong>Nail salons:</strong> 15-20% split among all service providers</li>
+                        <li><strong>Taxi/Rideshare:</strong> 15-20% of the fare</li>
+                        <li><strong>Hotel housekeeping:</strong> $2-5 per night</li>
+                        <li><strong>Spa services:</strong> 15-20% of the service cost</li>
+                    </ul>
+
+                    <h3 class="h5 mt-4 mb-3">Factors to Consider When Tipping</h3>
+
+                    <h4 class="h6 mt-3 mb-2">Service Quality</h4>
+                    <p>Adjust your tip based on the quality of service you received:</p>
+                    <ul>
+                        <li><strong>Exceptional service:</strong> 20-25% or higher</li>
+                        <li><strong>Good service:</strong> 18-20%</li>
+                        <li><strong>Average service:</strong> 15-18%</li>
+                        <li><strong>Poor service:</strong> 10-15% (consider speaking with management)</li>
+                    </ul>
+
+                    <h4 class="h6 mt-3 mb-2">Special Circumstances</h4>
+                    <ul>
+                        <li><strong>Large groups:</strong> Some restaurants add automatic gratuity (usually 18-20%)</li>
+                        <li><strong>Special requests:</strong> Tip more for accommodating dietary restrictions or modifications</li>
+                        <li><strong>Holiday periods:</strong> Consider tipping slightly more during busy holiday seasons</li>
+                        <li><strong>Regular customers:</strong> Consistent good tipping builds relationships with service staff</li>
+                    </ul>
+
+                    <h3 class="h5 mt-4 mb-3">International Tipping Customs</h3>
+
+                    <p>Tipping customs vary significantly around the world:</p>
+                    <ul>
+                        <li><strong>United States:</strong> Tipping is expected and forms a significant part of service workers' income</li>
+                        <li><strong>Canada:</strong> Similar to the US, 15-20% is standard</li>
+                        <li><strong>Europe:</strong> Varies by country; often 5-10% or rounding up the bill</li>
+                        <li><strong>Asia:</strong> Tipping is not customary in many countries and can sometimes be offensive</li>
+                        <li><strong>Australia:</strong> Tipping is optional but appreciated for exceptional service</li>
+                    </ul>
+
+                    <h3 class="h5 mt-4 mb-3">Bill Splitting Best Practices</h3>
+
+                    <h4 class="h6 mt-3 mb-2">Equal Split Method</h4>
+                    <p>When everyone orders similarly priced items or agrees to split equally:</p>
+                    <ul>
+                        <li>Add up the total bill including tax</li>
+                        <li>Calculate the tip on the full amount</li>
+                        <li>Divide the total (bill + tip) by the number of people</li>
+                    </ul>
+
+                    <h4 class="h6 mt-3 mb-2">Proportional Split Method</h4>
+                    <p>For groups where people ordered very different amounts:</p>
+                    <ul>
+                        <li>Each person pays for their own items plus tax</li>
+                        <li>Split the tip proportionally based on each person's bill</li>
+                        <li>Use our calculator to determine the tip amount, then divide proportionally</li>
+                    </ul>
+
+                    <h3 class="h5 mt-4 mb-3">Money-Saving Tips</h3>
+
+                    <ul>
+                        <li><strong>Check for included gratuity:</strong> Some restaurants automatically add tip for large groups</li>
+                        <li><strong>Calculate on pre-tax amount:</strong> You can tip on the pre-tax total to save a little money</li>
+                        <li><strong>Use happy hour specials:</strong> Lower bill amounts mean lower tip amounts</li>
+                        <li><strong>Consider lunch prices:</strong> Lunch menus are often cheaper than dinner</li>
+                    </ul>
+
+                    <h3 class="h5 mt-4 mb-3">Why Use Our Tip Calculator?</h3>
+
+                    <p>Our tip calculator offers several advantages:</p>
+                    <ul>
+                        <li><strong>Fast and accurate:</strong> Instant calculations with precise results</li>
+                        <li><strong>Multiple options:</strong> Percentage-based or fixed amount tipping</li>
+                        <li><strong>Bill splitting:</strong> Automatically calculates individual amounts</li>
+                        <li><strong>Mobile-friendly:</strong> Works perfectly on smartphones and tablets</li>
+                        <li><strong>No registration required:</strong> Free to use with no sign-up needed</li>
+                        <li><strong>Educational:</strong> Includes comprehensive tipping guidelines</li>
+                        <li><strong>AI-compatible:</strong> Perfect for use with ChatGPT, Claude, and other AI assistants</li>
+                    </ul>
+
+                    <p>Whether you're dining out, ordering delivery, or receiving any type of service, our tip calculator ensures you can quickly and accurately calculate appropriate tips while fairly splitting bills among your group. Bookmark this page for easy access whenever you need to calculate tips!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 Simple Calculators. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../index.html" class="text-decoration-none me-3">Home</a>
+                    <a href="../percentage-calculator/index.html" class="text-decoration-none me-3">Percentage Calculator</a>
+                    <a href="../bmi-calculator/index.html" class="text-decoration-none">BMI Calculator</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let selectedTipPercentage = 18;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle tip percentage button clicks
+            const tipButtons = document.querySelectorAll('.tip-percentage-btn');
+            tipButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    tipButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    // Set selected percentage
+                    selectedTipPercentage = parseFloat(this.dataset.tip);
+                    // Clear custom inputs
+                    document.getElementById('customTipPercent').value = '';
+                    document.getElementById('customTipAmount').value = '';
+                    // Hide result
+                    document.getElementById('tipResult').style.display = 'none';
+                });
+            });
+
+            // Handle custom tip percentage input
+            document.getElementById('customTipPercent').addEventListener('input', function() {
+                if (this.value) {
+                    // Remove active class from all buttons
+                    tipButtons.forEach(btn => btn.classList.remove('active'));
+                    selectedTipPercentage = parseFloat(this.value) || 0;
+                    // Clear custom amount
+                    document.getElementById('customTipAmount').value = '';
+                }
+                document.getElementById('tipResult').style.display = 'none';
+            });
+
+            // Handle custom tip amount input
+            document.getElementById('customTipAmount').addEventListener('input', function() {
+                if (this.value) {
+                    // Remove active class from all buttons
+                    tipButtons.forEach(btn => btn.classList.remove('active'));
+                    // Clear custom percentage
+                    document.getElementById('customTipPercent').value = '';
+                }
+                document.getElementById('tipResult').style.display = 'none';
+            });
+
+            // Auto-calculate on Enter key
+            const inputs = document.querySelectorAll('input[type="number"]');
+            inputs.forEach(input => {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        calculateTip();
+                    }
+                });
+
+                input.addEventListener('input', function() {
+                    // Hide result when input changes (except for custom tip inputs)
+                    if (this.id !== 'customTipPercent' && this.id !== 'customTipAmount') {
+                        document.getElementById('tipResult').style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        function calculateTip() {
+            const billAmount = parseFloat(document.getElementById('billAmount').value);
+            const numberOfPeople = parseInt(document.getElementById('numberOfPeople').value) || 1;
+            const customTipAmount = parseFloat(document.getElementById('customTipAmount').value);
+
+            if (isNaN(billAmount) || billAmount <= 0) {
+                alert('Please enter a valid bill amount.');
+                return;
+            }
+
+            let tipAmount;
+
+            // Check if custom tip amount is specified
+            if (customTipAmount && customTipAmount >= 0) {
+                tipAmount = customTipAmount;
+            } else {
+                // Use percentage-based tip
+                const tipPercentage = selectedTipPercentage;
+                if (tipPercentage < 0) {
+                    alert('Please select a valid tip percentage.');
+                    return;
+                }
+                tipAmount = (billAmount * tipPercentage) / 100;
+            }
+
+            const totalAmount = billAmount + tipAmount;
+
+            // Calculate per person amounts
+            const billPerPerson = billAmount / numberOfPeople;
+            const tipPerPerson = tipAmount / numberOfPeople;
+            const totalPerPerson = totalAmount / numberOfPeople;
+
+            // Display results
+            document.getElementById('resultBillAmount').textContent = `$${billAmount.toFixed(2)}`;
+            document.getElementById('resultTipAmount').textContent = `$${tipAmount.toFixed(2)}`;
+            document.getElementById('resultTotalAmount').textContent = `$${totalAmount.toFixed(2)}`;
+
+            // Show/hide split results
+            if (numberOfPeople > 1) {
+                document.getElementById('splitPeople').textContent = numberOfPeople;
+                document.getElementById('resultBillPerPerson').textContent = `$${billPerPerson.toFixed(2)}`;
+                document.getElementById('resultTipPerPerson').textContent = `$${tipPerPerson.toFixed(2)}`;
+                document.getElementById('resultTotalPerPerson').textContent = `$${totalPerPerson.toFixed(2)}`;
+                document.getElementById('splitResult').style.display = 'block';
+            } else {
+                document.getElementById('splitResult').style.display = 'none';
+            }
+
+            document.getElementById('tipResult').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

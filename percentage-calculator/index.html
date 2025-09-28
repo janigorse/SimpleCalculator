@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percentage Calculator - Free Online Percentage Calculator Tool</title>
+    <meta name="description" content="Free online percentage calculator. Calculate percentages, percentage increases, decreases, and find what percentage one number is of another. Fast and accurate results.">
+    <meta name="keywords" content="percentage calculator, percent calculator, percentage increase, percentage decrease, calculate percentage, online percentage tool">
+    <meta name="robots" content="index, follow">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #212529;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .calculator-container {
+            background-color: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 16px;
+        }
+        .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }
+        .btn-calculate {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 500;
+            width: 100%;
+        }
+        .btn-calculate:hover {
+            background-color: #0b5ed7;
+            border-color: #0a58ca;
+        }
+        .result-box {
+            background-color: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0d6efd;
+            margin-bottom: 10px;
+        }
+        .nav-links {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .calculator-tabs {
+            margin-bottom: 30px;
+        }
+        .tab-content {
+            background-color: #ffffff;
+        }
+        .nav-pills .nav-link {
+            color: #6c757d;
+            background-color: transparent;
+            border: 1px solid #e9ecef;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .nav-pills .nav-link.active {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <!-- Navigation Links -->
+        <div class="nav-links">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h5 class="mb-0">Simple Calculators</h5>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../index.html" class="btn btn-outline-primary btn-sm me-2">Home</a>
+                    <a href="../bmi-calculator/index.html" class="btn btn-outline-secondary btn-sm me-2">BMI Calculator</a>
+                    <a href="../tip-calculator/index.html" class="btn btn-outline-secondary btn-sm">Tip Calculator</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="text-center mb-4">Percentage Calculator</h1>
+                <p class="text-center text-muted mb-4">Calculate percentages quickly and accurately with our free online percentage calculator</p>
+
+                <!-- Calculator Tabs -->
+                <div class="calculator-tabs">
+                    <ul class="nav nav-pills justify-content-center" id="calculatorTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="basic-tab" data-bs-toggle="pill" data-bs-target="#basic" type="button" role="tab">Basic Percentage</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="increase-tab" data-bs-toggle="pill" data-bs-target="#increase" type="button" role="tab">Percentage Increase</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="decrease-tab" data-bs-toggle="pill" data-bs-target="#decrease" type="button" role="tab">Percentage Decrease</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="of-number-tab" data-bs-toggle="pill" data-bs-target="#of-number" type="button" role="tab">Percentage of Number</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-content" id="calculatorTabsContent">
+                    <!-- Basic Percentage Calculator -->
+                    <div class="tab-pane fade show active" id="basic" role="tabpanel">
+                        <div class="calculator-container">
+                            <h3 class="mb-4">What percentage is X of Y?</h3>
+                            <form id="basicForm">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="basicX" class="form-label">Number (X)</label>
+                                        <input type="number" class="form-control" id="basicX" placeholder="Enter number" step="any">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="basicY" class="form-label">Total (Y)</label>
+                                        <input type="number" class="form-control" id="basicY" placeholder="Enter total" step="any">
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-calculate" onclick="calculateBasic()">Calculate Percentage</button>
+                            </form>
+                            <div id="basicResult" class="result-box" style="display: none;">
+                                <div class="result-value" id="basicResultValue"></div>
+                                <div class="text-muted" id="basicResultText"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Percentage Increase Calculator -->
+                    <div class="tab-pane fade" id="increase" role="tabpanel">
+                        <div class="calculator-container">
+                            <h3 class="mb-4">Percentage Increase Calculator</h3>
+                            <form id="increaseForm">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="increaseOriginal" class="form-label">Original Value</label>
+                                        <input type="number" class="form-control" id="increaseOriginal" placeholder="Enter original value" step="any">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="increaseNew" class="form-label">New Value</label>
+                                        <input type="number" class="form-control" id="increaseNew" placeholder="Enter new value" step="any">
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-calculate" onclick="calculateIncrease()">Calculate Increase</button>
+                            </form>
+                            <div id="increaseResult" class="result-box" style="display: none;">
+                                <div class="result-value" id="increaseResultValue"></div>
+                                <div class="text-muted" id="increaseResultText"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Percentage Decrease Calculator -->
+                    <div class="tab-pane fade" id="decrease" role="tabpanel">
+                        <div class="calculator-container">
+                            <h3 class="mb-4">Percentage Decrease Calculator</h3>
+                            <form id="decreaseForm">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="decreaseOriginal" class="form-label">Original Value</label>
+                                        <input type="number" class="form-control" id="decreaseOriginal" placeholder="Enter original value" step="any">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="decreaseNew" class="form-label">New Value</label>
+                                        <input type="number" class="form-control" id="decreaseNew" placeholder="Enter new value" step="any">
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-calculate" onclick="calculateDecrease()">Calculate Decrease</button>
+                            </form>
+                            <div id="decreaseResult" class="result-box" style="display: none;">
+                                <div class="result-value" id="decreaseResultValue"></div>
+                                <div class="text-muted" id="decreaseResultText"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Percentage of Number Calculator -->
+                    <div class="tab-pane fade" id="of-number" role="tabpanel">
+                        <div class="calculator-container">
+                            <h3 class="mb-4">What is X% of Y?</h3>
+                            <form id="ofNumberForm">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="percentage" class="form-label">Percentage (%)</label>
+                                        <input type="number" class="form-control" id="percentage" placeholder="Enter percentage" step="any">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="ofNumber" class="form-label">Number</label>
+                                        <input type="number" class="form-control" id="ofNumber" placeholder="Enter number" step="any">
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-calculate" onclick="calculateOfNumber()">Calculate Result</button>
+                            </form>
+                            <div id="ofNumberResult" class="result-box" style="display: none;">
+                                <div class="result-value" id="ofNumberResultValue"></div>
+                                <div class="text-muted" id="ofNumberResultText"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO Content -->
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-10">
+                <div class="bg-light p-5 rounded-3">
+                    <h2 class="h3 mb-4">How to Use the Percentage Calculator</h2>
+
+                    <p>Our free online percentage calculator is designed to help you quickly and accurately calculate percentages for various scenarios. Whether you're calculating discounts, tax rates, tips, grade percentages, or analyzing data, this tool provides instant and reliable results.</p>
+
+                    <h3 class="h5 mt-4 mb-3">Types of Percentage Calculations</h3>
+
+                    <h4 class="h6 mt-3 mb-2">1. Basic Percentage (What percentage is X of Y?)</h4>
+                    <p>This calculation helps you find what percentage one number represents of another. For example, if you scored 85 out of 100 on a test, you would enter 85 as X and 100 as Y to find that you scored 85%. This is commonly used for:</p>
+                    <ul>
+                        <li>Test scores and grades</li>
+                        <li>Survey results and statistics</li>
+                        <li>Progress tracking</li>
+                        <li>Market share analysis</li>
+                    </ul>
+
+                    <h4 class="h6 mt-3 mb-2">2. Percentage Increase</h4>
+                    <p>Calculate how much a value has increased as a percentage. Enter the original value and the new (higher) value to see the percentage increase. This is useful for:</p>
+                    <ul>
+                        <li>Salary raises and wage increases</li>
+                        <li>Investment returns</li>
+                        <li>Population growth</li>
+                        <li>Price increases</li>
+                        <li>Performance improvements</li>
+                    </ul>
+
+                    <h4 class="h6 mt-3 mb-2">3. Percentage Decrease</h4>
+                    <p>Calculate how much a value has decreased as a percentage. Enter the original value and the new (lower) value to see the percentage decrease. Common applications include:</p>
+                    <ul>
+                        <li>Discount calculations</li>
+                        <li>Weight loss tracking</li>
+                        <li>Sales decline analysis</li>
+                        <li>Cost reduction measurements</li>
+                        <li>Stock market losses</li>
+                    </ul>
+
+                    <h4 class="h6 mt-3 mb-2">4. Percentage of a Number (What is X% of Y?)</h4>
+                    <p>Find a specific percentage of any number. Enter the percentage and the number to get the result. This is frequently used for:</p>
+                    <ul>
+                        <li>Calculating tips at restaurants</li>
+                        <li>Determining tax amounts</li>
+                        <li>Finding discount amounts</li>
+                        <li>Commission calculations</li>
+                        <li>Interest calculations</li>
+                    </ul>
+
+                    <h3 class="h5 mt-4 mb-3">Step-by-Step Instructions</h3>
+
+                    <p><strong>For Basic Percentage Calculation:</strong></p>
+                    <ol>
+                        <li>Select the "Basic Percentage" tab</li>
+                        <li>Enter the number you want to find the percentage of in the "Number (X)" field</li>
+                        <li>Enter the total or whole amount in the "Total (Y)" field</li>
+                        <li>Click "Calculate Percentage" to see the result</li>
+                    </ol>
+
+                    <p><strong>For Percentage Increase/Decrease:</strong></p>
+                    <ol>
+                        <li>Choose the appropriate tab (Increase or Decrease)</li>
+                        <li>Enter the original value in the first field</li>
+                        <li>Enter the new value in the second field</li>
+                        <li>Click the calculate button to see the percentage change</li>
+                    </ol>
+
+                    <p><strong>For Percentage of a Number:</strong></p>
+                    <ol>
+                        <li>Select the "Percentage of Number" tab</li>
+                        <li>Enter the percentage in the first field (without the % symbol)</li>
+                        <li>Enter the number you want to calculate the percentage of</li>
+                        <li>Click "Calculate Result" to get your answer</li>
+                    </ol>
+
+                    <h3 class="h5 mt-4 mb-3">Tips for Accurate Calculations</h3>
+                    <ul>
+                        <li><strong>Double-check your inputs:</strong> Make sure you're entering numbers in the correct fields</li>
+                        <li><strong>Use decimal points:</strong> For precise calculations, you can enter decimal numbers (e.g., 15.5)</li>
+                        <li><strong>Don't include symbols:</strong> Enter only numbers - the calculator will add the % symbol to results</li>
+                        <li><strong>Verify results:</strong> For important calculations, double-check by using a different method</li>
+                    </ul>
+
+                    <h3 class="h5 mt-4 mb-3">Why Use Our Percentage Calculator?</h3>
+                    <p>Our percentage calculator stands out because it's:</p>
+                    <ul>
+                        <li><strong>Free and accessible:</strong> No registration or payment required</li>
+                        <li><strong>Fast and accurate:</strong> Instant calculations with precise results</li>
+                        <li><strong>Mobile-friendly:</strong> Works perfectly on all devices</li>
+                        <li><strong>Easy to use:</strong> Clean interface with clear instructions</li>
+                        <li><strong>Versatile:</strong> Four different calculation types in one tool</li>
+                        <li><strong>AI-friendly:</strong> Perfect for use with ChatGPT, Claude, and other AI assistants</li>
+                    </ul>
+
+                    <p>Whether you're a student, professional, business owner, or just need quick percentage calculations for daily life, our calculator provides the accuracy and convenience you need. Bookmark this page for easy access whenever you need to calculate percentages!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 Simple Calculators. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../index.html" class="text-decoration-none me-3">Home</a>
+                    <a href="../bmi-calculator/index.html" class="text-decoration-none me-3">BMI Calculator</a>
+                    <a href="../tip-calculator/index.html" class="text-decoration-none">Tip Calculator</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function calculateBasic() {
+            const x = parseFloat(document.getElementById('basicX').value);
+            const y = parseFloat(document.getElementById('basicY').value);
+
+            if (isNaN(x) || isNaN(y) || y === 0) {
+                alert('Please enter valid numbers. The total cannot be zero.');
+                return;
+            }
+
+            const percentage = (x / y) * 100;
+            document.getElementById('basicResultValue').textContent = percentage.toFixed(2) + '%';
+            document.getElementById('basicResultText').textContent = `${x} is ${percentage.toFixed(2)}% of ${y}`;
+            document.getElementById('basicResult').style.display = 'block';
+        }
+
+        function calculateIncrease() {
+            const original = parseFloat(document.getElementById('increaseOriginal').value);
+            const newValue = parseFloat(document.getElementById('increaseNew').value);
+
+            if (isNaN(original) || isNaN(newValue) || original === 0) {
+                alert('Please enter valid numbers. The original value cannot be zero.');
+                return;
+            }
+
+            const increase = ((newValue - original) / original) * 100;
+            document.getElementById('increaseResultValue').textContent = increase.toFixed(2) + '%';
+            document.getElementById('increaseResultText').textContent = `Increase from ${original} to ${newValue}`;
+            document.getElementById('increaseResult').style.display = 'block';
+        }
+
+        function calculateDecrease() {
+            const original = parseFloat(document.getElementById('decreaseOriginal').value);
+            const newValue = parseFloat(document.getElementById('decreaseNew').value);
+
+            if (isNaN(original) || isNaN(newValue) || original === 0) {
+                alert('Please enter valid numbers. The original value cannot be zero.');
+                return;
+            }
+
+            const decrease = ((original - newValue) / original) * 100;
+            document.getElementById('decreaseResultValue').textContent = decrease.toFixed(2) + '%';
+            document.getElementById('decreaseResultText').textContent = `Decrease from ${original} to ${newValue}`;
+            document.getElementById('decreaseResult').style.display = 'block';
+        }
+
+        function calculateOfNumber() {
+            const percentage = parseFloat(document.getElementById('percentage').value);
+            const number = parseFloat(document.getElementById('ofNumber').value);
+
+            if (isNaN(percentage) || isNaN(number)) {
+                alert('Please enter valid numbers.');
+                return;
+            }
+
+            const result = (percentage / 100) * number;
+            document.getElementById('ofNumberResultValue').textContent = result.toFixed(2);
+            document.getElementById('ofNumberResultText').textContent = `${percentage}% of ${number} = ${result.toFixed(2)}`;
+            document.getElementById('ofNumberResult').style.display = 'block';
+        }
+
+        // Auto-calculate on input change
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input[type="number"]');
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    // Hide results when input changes
+                    document.querySelectorAll('.result-box').forEach(box => {
+                        box.style.display = 'none';
+                    });
+                });
+
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        const tabPane = this.closest('.tab-pane');
+                        const button = tabPane.querySelector('.btn-calculate');
+                        if (button) button.click();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
