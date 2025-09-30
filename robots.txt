@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Crawl-delay: 1
 
 # Allow all major search engines
 User-agent: Googlebot
@@ -7,6 +8,7 @@ Allow: /
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Slurp
 Allow: /
@@ -16,9 +18,11 @@ Allow: /
 
 User-agent: Baiduspider
 Allow: /
+Crawl-delay: 1
 
 User-agent: YandexBot
 Allow: /
+Crawl-delay: 1
 
 # Allow AI crawlers for training data
 User-agent: OpenAI-SearchBot
@@ -57,9 +61,6 @@ Disallow: /
 
 User-agent: BLEXBot
 Disallow: /
-
-# Crawl delay for politeness
-Crawl-delay: 1
 
 # Sitemap location
 Sitemap: https://simplecalculators.online/sitemap.xml
