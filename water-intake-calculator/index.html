@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2ZCHC6EL0C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2ZCHC6EL0C');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Intake Calculator - Daily Hydration Needs</title>
+    <meta name="description" content="Free water intake calculator. Calculate daily water needs based on weight and activity level.">
+    <meta name="keywords" content="water calculator, hydration calculator, daily water intake">
+    <meta name="robots" content="index, follow">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #212529;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .calculator-container {
+            background-color: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .form-control, .form-select {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 16px;
+        }
+        .btn-calculate {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 500;
+            width: 100%;
+        }
+        .result-box {
+            background-color: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0d6efd;
+        }
+        .nav-links {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7912187200834084"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="nav-links">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h5 class="mb-0">Simple Calculators</h5>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../index.html" class="btn btn-outline-primary btn-sm me-1 mb-1">Home</a>
+                    <a href="../percentage-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Percentage</a>
+                    <a href="../bmi-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">BMI</a>
+                    <a href="../tip-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Tip</a>
+                    <a href="../loan-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Loan</a>
+                    <a href="../discount-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Discount</a>
+                    <a href="../sales-tax-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Tax</a>
+                    <a href="../age-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Age</a>
+                    <a href="../grade-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Grade</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="text-center mb-4">Water Intake Calculator</h1>
+                <p class="text-center text-muted mb-4">Calculate your daily water needs</p>
+
+                <div class="calculator-container">
+                    <form id="waterForm">
+                        <div class="mb-3">
+                            <label for="weight" class="form-label">Weight (lbs)</label>
+                            <input type="number" class="form-control" id="weight" placeholder="Enter weight" min="50">
+                        </div>
+                        <div class="mb-3">
+                            <label for="activity" class="form-label">Activity Level</label>
+                            <select class="form-select" id="activity">
+                                <option value="0.5">Sedentary</option>
+                                <option value="0.6" selected>Moderate</option>
+                                <option value="0.7">Active</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn btn-calculate" onclick="calculateWater()">Calculate Water Intake</button>
+                    </form>
+                    <div id="waterResult" class="result-box" style="display: none;">
+                        <div class="result-value" id="waterOunces"></div>
+                        <p class="text-muted" id="waterCups"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-10">
+                <div class="bg-light p-5 rounded-3">
+                    <h2 class="h3 mb-4">How to Use the Water Intake Calculator</h2>
+                    <p>Calculate your recommended daily water intake based on your body weight and activity level.</p>
+                    <h3 class="h5 mt-4 mb-3">Instructions</h3>
+                    <ol>
+                        <li>Enter your weight in pounds</li>
+                        <li>Select your activity level</li>
+                        <li>Click calculate to see recommended daily water intake</li>
+                    </ol>
+                    <div class="alert alert-info mt-3">
+                        <strong>💧 Tip:</strong> These are general recommendations. Adjust based on climate, health conditions, and individual needs.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 Simple Calculators. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../index.html" class="text-decoration-none me-2">Home</a>
+                    <a href="../percentage-calculator/index.html" class="text-decoration-none me-2">Percentage</a>
+                    <a href="../bmi-calculator/index.html" class="text-decoration-none me-2">BMI</a>
+                    <a href="../tip-calculator/index.html" class="text-decoration-none me-2">Tip</a>
+                    <a href="../loan-calculator/index.html" class="text-decoration-none me-2">Loan</a>
+                    <a href="../discount-calculator/index.html" class="text-decoration-none me-2">Discount</a>
+                    <a href="../currency-converter/index.html" class="text-decoration-none me-2">Currency</a>
+                    <a href="../sales-tax-calculator/index.html" class="text-decoration-none me-2">Tax</a>
+                    <a href="../calorie-calculator/index.html" class="text-decoration-none me-2">Calorie</a>
+                    <a href="../age-calculator/index.html" class="text-decoration-none me-2">Age</a>
+                    <a href="../grade-calculator/index.html" class="text-decoration-none me-2">Grade</a>
+                    <a href="../unit-converter/index.html" class="text-decoration-none me-2">Unit</a>
+                    <a href="../fuel-cost-calculator/index.html" class="text-decoration-none me-2">Fuel</a>
+                    <a href="../compound-interest-calculator/index.html" class="text-decoration-none">Interest</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function calculateWater() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const activity = parseFloat(document.getElementById('activity').value);
+
+            if (isNaN(weight) || weight <= 0) {
+                alert('Please enter a valid weight.');
+                return;
+            }
+
+            const ounces = weight * activity;
+            const cups = ounces / 8;
+
+            document.getElementById('waterOunces').textContent = Math.round(ounces) + ' oz per day';
+            document.getElementById('waterCups').textContent = Math.round(cups) + ' cups per day';
+            document.getElementById('waterResult').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

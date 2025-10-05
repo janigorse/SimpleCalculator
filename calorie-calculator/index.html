@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2ZCHC6EL0C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2ZCHC6EL0C');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calorie Calculator - Daily Calorie Needs Calculator</title>
+    <meta name="description" content="Free online calorie calculator. Calculate your daily calorie needs based on age, weight, height, and activity level. Perfect for weight loss and fitness goals.">
+    <meta name="keywords" content="calorie calculator, daily calorie needs, TDEE calculator, weight loss calculator, fitness calculator">
+    <meta name="robots" content="index, follow">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #212529;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .calculator-container {
+            background-color: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .form-control, .form-select {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 16px;
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }
+        .btn-calculate {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 500;
+            width: 100%;
+        }
+        .btn-calculate:hover {
+            background-color: #0b5ed7;
+            border-color: #0a58ca;
+        }
+        .result-box {
+            background-color: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0d6efd;
+            margin-bottom: 10px;
+        }
+        .result-item {
+            padding: 10px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        .nav-links {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7912187200834084"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="nav-links">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h5 class="mb-0">Simple Calculators</h5>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../index.html" class="btn btn-outline-primary btn-sm me-1 mb-1">Home</a>
+                    <a href="../percentage-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Percentage</a>
+                    <a href="../bmi-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">BMI</a>
+                    <a href="../tip-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Tip</a>
+                    <a href="../loan-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Loan</a>
+                    <a href="../discount-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Discount</a>
+                    <a href="../sales-tax-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Tax</a>
+                    <a href="../age-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Age</a>
+                    <a href="../grade-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Grade</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="text-center mb-4">Calorie Calculator</h1>
+                <p class="text-center text-muted mb-4">Calculate your daily calorie needs</p>
+
+                <div class="calculator-container">
+                    <form id="calorieForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="age" class="form-label">Age (years)</label>
+                                <input type="number" class="form-control" id="age" placeholder="Enter age" min="15" max="100">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="gender" class="form-label">Gender</label>
+                                <select class="form-select" id="gender">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="weight" class="form-label">Weight (lbs)</label>
+                                <input type="number" class="form-control" id="weight" placeholder="Enter weight" step="0.1" min="50">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="height" class="form-label">Height (inches)</label>
+                                <input type="number" class="form-control" id="height" placeholder="Enter height" step="0.1" min="48">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="activity" class="form-label">Activity Level</label>
+                            <select class="form-select" id="activity">
+                                <option value="1.2">Sedentary (little or no exercise)</option>
+                                <option value="1.375">Lightly active (exercise 1-3 days/week)</option>
+                                <option value="1.55">Moderately active (exercise 3-5 days/week)</option>
+                                <option value="1.725">Very active (exercise 6-7 days/week)</option>
+                                <option value="1.9">Extra active (intense exercise daily)</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn btn-calculate" onclick="calculateCalories()">Calculate Calories</button>
+                    </form>
+                    <div id="calorieResult" class="result-box" style="display: none;">
+                        <div class="text-center">
+                            <div class="result-value" id="maintenanceCalories"></div>
+                            <p class="text-muted">Maintenance Calories (TDEE)</p>
+                        </div>
+                        <hr>
+                        <div class="result-item">
+                            <div class="d-flex justify-content-between">
+                                <span>Weight Loss (mild):</span>
+                                <strong id="mildLoss"></strong>
+                            </div>
+                        </div>
+                        <div class="result-item">
+                            <div class="d-flex justify-content-between">
+                                <span>Weight Loss (moderate):</span>
+                                <strong id="moderateLoss"></strong>
+                            </div>
+                        </div>
+                        <div class="result-item">
+                            <div class="d-flex justify-content-between">
+                                <span>Weight Gain:</span>
+                                <strong id="weightGain"></strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-10">
+                <div class="bg-light p-5 rounded-3">
+                    <h2 class="h3 mb-4">How to Use the Calorie Calculator</h2>
+                    <p>Calculate your daily calorie needs using the Mifflin-St Jeor equation, the most accurate formula for estimating calorie requirements.</p>
+
+                    <h3 class="h5 mt-4 mb-3">Step-by-Step Instructions</h3>
+                    <ol>
+                        <li><strong>Enter Age:</strong> Your current age in years</li>
+                        <li><strong>Select Gender:</strong> Choose male or female</li>
+                        <li><strong>Enter Weight:</strong> Your current weight in pounds</li>
+                        <li><strong>Enter Height:</strong> Your height in inches</li>
+                        <li><strong>Select Activity Level:</strong> Choose your typical physical activity level</li>
+                        <li><strong>Click Calculate:</strong> See your daily calorie needs</li>
+                    </ol>
+
+                    <h3 class="h5 mt-4 mb-3">Understanding Your Results</h3>
+                    <ul>
+                        <li><strong>Maintenance Calories (TDEE):</strong> Calories to maintain current weight</li>
+                        <li><strong>Weight Loss (mild):</strong> 10% deficit for gradual weight loss (~0.5 lb/week)</li>
+                        <li><strong>Weight Loss (moderate):</strong> 20% deficit for steady weight loss (~1 lb/week)</li>
+                        <li><strong>Weight Gain:</strong> 10% surplus for muscle gain</li>
+                    </ul>
+
+                    <div class="alert alert-info mt-3">
+                        <strong>📊 Note:</strong> These are estimates. Individual needs vary based on metabolism, muscle mass, and other factors.
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 Simple Calculators. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../index.html" class="text-decoration-none me-2">Home</a>
+                    <a href="../percentage-calculator/index.html" class="text-decoration-none me-2">Percentage</a>
+                    <a href="../bmi-calculator/index.html" class="text-decoration-none me-2">BMI</a>
+                    <a href="../tip-calculator/index.html" class="text-decoration-none me-2">Tip</a>
+                    <a href="../loan-calculator/index.html" class="text-decoration-none me-2">Loan</a>
+                    <a href="../discount-calculator/index.html" class="text-decoration-none me-2">Discount</a>
+                    <a href="../currency-converter/index.html" class="text-decoration-none me-2">Currency</a>
+                    <a href="../sales-tax-calculator/index.html" class="text-decoration-none me-2">Tax</a>
+                    <a href="../calorie-calculator/index.html" class="text-decoration-none me-2">Calorie</a>
+                    <a href="../age-calculator/index.html" class="text-decoration-none me-2">Age</a>
+                    <a href="../grade-calculator/index.html" class="text-decoration-none me-2">Grade</a>
+                    <a href="../unit-converter/index.html" class="text-decoration-none me-2">Unit</a>
+                    <a href="../fuel-cost-calculator/index.html" class="text-decoration-none me-2">Fuel</a>
+                    <a href="../compound-interest-calculator/index.html" class="text-decoration-none">Interest</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function calculateCalories() {
+            const age = parseInt(document.getElementById('age').value);
+            const gender = document.getElementById('gender').value;
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            const activity = parseFloat(document.getElementById('activity').value);
+
+            if (isNaN(age) || isNaN(weight) || isNaN(height)) {
+                alert('Please enter valid numbers for all fields.');
+                return;
+            }
+
+            // Convert to metric for Mifflin-St Jeor equation
+            const weightKg = weight * 0.453592;
+            const heightCm = height * 2.54;
+
+            // Calculate BMR
+            let bmr;
+            if (gender === 'male') {
+                bmr = 10 * weightKg + 6.25 * heightCm - 5 * age + 5;
+            } else {
+                bmr = 10 * weightKg + 6.25 * heightCm - 5 * age - 161;
+            }
+
+            // Calculate TDEE
+            const tdee = bmr * activity;
+
+            // Calculate goals
+            const mildLoss = tdee * 0.9;
+            const moderateLoss = tdee * 0.8;
+            const gain = tdee * 1.1;
+
+            // Display results
+            document.getElementById('maintenanceCalories').textContent = Math.round(tdee) + ' cal/day';
+            document.getElementById('mildLoss').textContent = Math.round(mildLoss) + ' cal/day';
+            document.getElementById('moderateLoss').textContent = Math.round(moderateLoss) + ' cal/day';
+            document.getElementById('weightGain').textContent = Math.round(gain) + ' cal/day';
+            document.getElementById('calorieResult').style.display = 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input[type="number"]');
+            inputs.forEach(input => {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        calculateCalories();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

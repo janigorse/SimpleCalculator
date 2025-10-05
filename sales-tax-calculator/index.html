@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2ZCHC6EL0C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2ZCHC6EL0C');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Tax Calculator - Calculate Tax on Purchases</title>
+    <meta name="description" content="Free online sales tax calculator. Add or remove sales tax from prices instantly. Perfect for shopping, business, and pricing calculations.">
+    <meta name="keywords" content="sales tax calculator, tax calculator, price calculator, add tax, remove tax, vat calculator">
+    <meta name="robots" content="index, follow">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #212529;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .calculator-container {
+            background-color: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 16px;
+        }
+        .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }
+        .btn-calculate {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 500;
+            width: 100%;
+        }
+        .btn-calculate:hover {
+            background-color: #0b5ed7;
+            border-color: #0a58ca;
+        }
+        .result-box {
+            background-color: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0d6efd;
+            margin-bottom: 10px;
+        }
+        .result-item {
+            padding: 10px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        .nav-links {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7912187200834084"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="nav-links">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h5 class="mb-0">Simple Calculators</h5>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../index.html" class="btn btn-outline-primary btn-sm me-1 mb-1">Home</a>
+                    <a href="../percentage-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Percentage</a>
+                    <a href="../bmi-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">BMI</a>
+                    <a href="../tip-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Tip</a>
+                    <a href="../loan-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Loan</a>
+                    <a href="../discount-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Discount</a>
+                    <a href="../sales-tax-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Tax</a>
+                    <a href="../age-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Age</a>
+                    <a href="../grade-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Grade</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="text-center mb-4">Sales Tax Calculator</h1>
+                <p class="text-center text-muted mb-4">Add or remove sales tax from any price</p>
+
+                <div class="calculator-container">
+                    <form id="taxForm">
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Price ($)</label>
+                            <input type="number" class="form-control" id="price" placeholder="Enter price" step="0.01" min="0">
+                        </div>
+                        <div class="mb-3">
+                            <label for="taxRate" class="form-label">Tax Rate (%)</label>
+                            <input type="number" class="form-control" id="taxRate" placeholder="Enter tax rate" step="0.01" min="0" max="100">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Calculation Type</label>
+                            <div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="calcType" id="addTax" value="add" checked>
+                                    <label class="form-check-label" for="addTax">Add Tax to Price</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="calcType" id="removeTax" value="remove">
+                                    <label class="form-check-label" for="removeTax">Remove Tax from Price</label>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-calculate" onclick="calculateTax()">Calculate Tax</button>
+                    </form>
+                    <div id="taxResult" class="result-box" style="display: none;">
+                        <div class="text-center">
+                            <div class="result-value" id="finalPrice"></div>
+                            <p class="text-muted" id="resultLabel"></p>
+                        </div>
+                        <hr>
+                        <div class="result-item">
+                            <div class="d-flex justify-content-between">
+                                <span id="priceLabel">Price Before Tax:</span>
+                                <strong id="basePrice"></strong>
+                            </div>
+                        </div>
+                        <div class="result-item">
+                            <div class="d-flex justify-content-between">
+                                <span>Tax Amount:</span>
+                                <strong id="taxAmount"></strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-10">
+                <div class="bg-light p-5 rounded-3">
+                    <h2 class="h3 mb-4">How to Use the Sales Tax Calculator</h2>
+                    <p>Calculate sales tax quickly with our free online calculator. Add tax to prices or remove tax from totals.</p>
+
+                    <h3 class="h5 mt-4 mb-3">Step-by-Step Instructions</h3>
+                    <ol>
+                        <li><strong>Enter Price:</strong> Input the price amount in dollars</li>
+                        <li><strong>Enter Tax Rate:</strong> Input the sales tax rate as a percentage</li>
+                        <li><strong>Select Type:</strong> Choose to add tax to price or remove tax from total</li>
+                        <li><strong>Click Calculate:</strong> Press the button to see results</li>
+                    </ol>
+
+                    <h3 class="h5 mt-4 mb-3">Common Sales Tax Rates by State (US)</h3>
+                    <ul>
+                        <li>California: 7.25%</li>
+                        <li>Texas: 6.25%</li>
+                        <li>Florida: 6%</li>
+                        <li>New York: 4%</li>
+                        <li>Pennsylvania: 6%</li>
+                    </ul>
+                    <p><em>Note: Local rates may vary. Check your local tax rate for accurate calculations.</em></p>
+
+                    <div class="alert alert-info mt-3">
+                        <strong>💡 Tip:</strong> When removing tax, the calculator works backwards to find the pre-tax price from a total that includes tax.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 Simple Calculators. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../index.html" class="text-decoration-none me-2">Home</a>
+                    <a href="../percentage-calculator/index.html" class="text-decoration-none me-2">Percentage</a>
+                    <a href="../bmi-calculator/index.html" class="text-decoration-none me-2">BMI</a>
+                    <a href="../tip-calculator/index.html" class="text-decoration-none me-2">Tip</a>
+                    <a href="../loan-calculator/index.html" class="text-decoration-none me-2">Loan</a>
+                    <a href="../discount-calculator/index.html" class="text-decoration-none me-2">Discount</a>
+                    <a href="../currency-converter/index.html" class="text-decoration-none me-2">Currency</a>
+                    <a href="../sales-tax-calculator/index.html" class="text-decoration-none me-2">Tax</a>
+                    <a href="../calorie-calculator/index.html" class="text-decoration-none me-2">Calorie</a>
+                    <a href="../age-calculator/index.html" class="text-decoration-none me-2">Age</a>
+                    <a href="../grade-calculator/index.html" class="text-decoration-none me-2">Grade</a>
+                    <a href="../unit-converter/index.html" class="text-decoration-none me-2">Unit</a>
+                    <a href="../fuel-cost-calculator/index.html" class="text-decoration-none me-2">Fuel</a>
+                    <a href="../compound-interest-calculator/index.html" class="text-decoration-none">Interest</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function calculateTax() {
+            const price = parseFloat(document.getElementById('price').value);
+            const taxRate = parseFloat(document.getElementById('taxRate').value);
+            const calcType = document.querySelector('input[name="calcType"]:checked').value;
+
+            if (isNaN(price) || isNaN(taxRate) || price < 0 || taxRate < 0) {
+                alert('Please enter valid positive numbers.');
+                return;
+            }
+
+            let basePrice, taxAmount, finalPrice;
+
+            if (calcType === 'add') {
+                basePrice = price;
+                taxAmount = (price * taxRate) / 100;
+                finalPrice = price + taxAmount;
+
+                document.getElementById('resultLabel').textContent = 'Total Price (with tax)';
+                document.getElementById('priceLabel').textContent = 'Price Before Tax:';
+            } else {
+                finalPrice = price;
+                basePrice = price / (1 + taxRate / 100);
+                taxAmount = price - basePrice;
+
+                document.getElementById('resultLabel').textContent = 'Price Before Tax';
+                document.getElementById('priceLabel').textContent = 'Total Price (with tax):';
+            }
+
+            document.getElementById('finalPrice').textContent = '$' + (calcType === 'add' ? finalPrice : basePrice).toFixed(2);
+            document.getElementById('basePrice').textContent = '$' + (calcType === 'add' ? basePrice : finalPrice).toFixed(2);
+            document.getElementById('taxAmount').textContent = '$' + taxAmount.toFixed(2);
+            document.getElementById('taxResult').style.display = 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input[type="number"]');
+            inputs.forEach(input => {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        calculateTax();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

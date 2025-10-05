@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2ZCHC6EL0C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2ZCHC6EL0C');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compound Interest Calculator - Investment Growth Calculator</title>
+    <meta name="description" content="Free compound interest calculator. Calculate investment growth with compound interest. Perfect for savings, investments, and retirement planning.">
+    <meta name="keywords" content="compound interest calculator, investment calculator, savings calculator, interest calculator">
+    <meta name="robots" content="index, follow">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #212529;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .calculator-container {
+            background-color: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .form-control, .form-select {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 16px;
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }
+        .btn-calculate {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 500;
+            width: 100%;
+        }
+        .btn-calculate:hover {
+            background-color: #0b5ed7;
+            border-color: #0a58ca;
+        }
+        .result-box {
+            background-color: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0d6efd;
+            margin-bottom: 10px;
+        }
+        .result-item {
+            padding: 10px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        .nav-links {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7912187200834084"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="nav-links">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h5 class="mb-0">Simple Calculators</h5>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../index.html" class="btn btn-outline-primary btn-sm me-1 mb-1">Home</a>
+                    <a href="../percentage-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Percentage</a>
+                    <a href="../bmi-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">BMI</a>
+                    <a href="../tip-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Tip</a>
+                    <a href="../loan-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Loan</a>
+                    <a href="../discount-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Discount</a>
+                    <a href="../sales-tax-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Tax</a>
+                    <a href="../age-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Age</a>
+                    <a href="../grade-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Grade</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="text-center mb-4">Compound Interest Calculator</h1>
+                <p class="text-center text-muted mb-4">Calculate investment growth with compound interest</p>
+
+                <div class="calculator-container">
+                    <form id="compoundForm">
+                        <div class="mb-3">
+                            <label for="principal" class="form-label">Initial Investment ($)</label>
+                            <input type="number" class="form-control" id="principal" placeholder="Enter initial amount" step="0.01" min="0">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="interestRate" class="form-label">Annual Interest Rate (%)</label>
+                                <input type="number" class="form-control" id="interestRate" placeholder="Enter rate" step="0.01" min="0">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="years" class="form-label">Time Period (Years)</label>
+                                <input type="number" class="form-control" id="years" placeholder="Enter years" step="1" min="1">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="compoundFreq" class="form-label">Compound Frequency</label>
+                            <select class="form-select" id="compoundFreq">
+                                <option value="1">Annually</option>
+                                <option value="2">Semi-annually</option>
+                                <option value="4">Quarterly</option>
+                                <option value="12" selected>Monthly</option>
+                                <option value="365">Daily</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn btn-calculate" onclick="calculateCompound()">Calculate Growth</button>
+                    </form>
+                    <div id="compoundResult" class="result-box" style="display: none;">
+                        <div class="text-center">
+                            <div class="result-value" id="finalAmount"></div>
+                            <p class="text-muted">Final Amount</p>
+                        </div>
+                        <hr>
+                        <div class="result-item">
+                            <div class="d-flex justify-content-between">
+                                <span>Initial Investment:</span>
+                                <strong id="displayPrincipal"></strong>
+                            </div>
+                        </div>
+                        <div class="result-item">
+                            <div class="d-flex justify-content-between">
+                                <span>Total Interest Earned:</span>
+                                <strong id="totalInterest"></strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-10">
+                <div class="bg-light p-5 rounded-3">
+                    <h2 class="h3 mb-4">How to Use the Compound Interest Calculator</h2>
+                    <p>Calculate how your investments grow over time with compound interest.</p>
+
+                    <h3 class="h5 mt-4 mb-3">Step-by-Step Instructions</h3>
+                    <ol>
+                        <li><strong>Initial Investment:</strong> Enter your starting amount</li>
+                        <li><strong>Interest Rate:</strong> Annual interest rate percentage</li>
+                        <li><strong>Time Period:</strong> Number of years to invest</li>
+                        <li><strong>Frequency:</strong> How often interest compounds</li>
+                        <li><strong>Calculate:</strong> See your investment growth</li>
+                    </ol>
+
+                    <h3 class="h5 mt-4 mb-3">Understanding Compound Interest</h3>
+                    <p>Compound interest means you earn interest on your interest. The more frequently interest compounds, the more you earn.</p>
+
+                    <div class="alert alert-info mt-3">
+                        <strong>💡 Tip:</strong> Starting early and letting interest compound over time is one of the most powerful wealth-building strategies.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 Simple Calculators. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../index.html" class="text-decoration-none me-2">Home</a>
+                    <a href="../percentage-calculator/index.html" class="text-decoration-none me-2">Percentage</a>
+                    <a href="../bmi-calculator/index.html" class="text-decoration-none me-2">BMI</a>
+                    <a href="../tip-calculator/index.html" class="text-decoration-none me-2">Tip</a>
+                    <a href="../loan-calculator/index.html" class="text-decoration-none me-2">Loan</a>
+                    <a href="../discount-calculator/index.html" class="text-decoration-none me-2">Discount</a>
+                    <a href="../currency-converter/index.html" class="text-decoration-none me-2">Currency</a>
+                    <a href="../sales-tax-calculator/index.html" class="text-decoration-none me-2">Tax</a>
+                    <a href="../calorie-calculator/index.html" class="text-decoration-none me-2">Calorie</a>
+                    <a href="../age-calculator/index.html" class="text-decoration-none me-2">Age</a>
+                    <a href="../grade-calculator/index.html" class="text-decoration-none me-2">Grade</a>
+                    <a href="../unit-converter/index.html" class="text-decoration-none me-2">Unit</a>
+                    <a href="../fuel-cost-calculator/index.html" class="text-decoration-none me-2">Fuel</a>
+                    <a href="../compound-interest-calculator/index.html" class="text-decoration-none">Interest</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function calculateCompound() {
+            const principal = parseFloat(document.getElementById('principal').value);
+            const rate = parseFloat(document.getElementById('interestRate').value) / 100;
+            const years = parseFloat(document.getElementById('years').value);
+            const frequency = parseFloat(document.getElementById('compoundFreq').value);
+
+            if (isNaN(principal) || isNaN(rate) || isNaN(years) || principal <= 0 || rate < 0 || years <= 0) {
+                alert('Please enter valid positive numbers.');
+                return;
+            }
+
+            // Compound interest formula: A = P(1 + r/n)^(nt)
+            const amount = principal * Math.pow(1 + rate / frequency, frequency * years);
+            const interest = amount - principal;
+
+            document.getElementById('finalAmount').textContent = '$' + amount.toFixed(2);
+            document.getElementById('displayPrincipal').textContent = '$' + principal.toFixed(2);
+            document.getElementById('totalInterest').textContent = '$' + interest.toFixed(2);
+            document.getElementById('compoundResult').style.display = 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input[type="number"]');
+            inputs.forEach(input => {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        calculateCompound();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

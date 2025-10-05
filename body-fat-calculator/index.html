@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2ZCHC6EL0C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2ZCHC6EL0C');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Fat Percentage Calculator - US Navy Method</title>
+    <meta name="description" content="Free body fat percentage calculator using the US Navy method. Calculate body fat from waist, neck, and height measurements.">
+    <meta name="keywords" content="body fat calculator, body fat percentage, navy method, fitness calculator">
+    <meta name="robots" content="index, follow">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #212529;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .calculator-container {
+            background-color: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .form-control, .form-select {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 16px;
+        }
+        .btn-calculate {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 500;
+            width: 100%;
+        }
+        .result-box {
+            background-color: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0d6efd;
+        }
+        .nav-links {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7912187200834084"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="nav-links">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h5 class="mb-0">Simple Calculators</h5>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../index.html" class="btn btn-outline-primary btn-sm me-1 mb-1">Home</a>
+                    <a href="../percentage-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Percentage</a>
+                    <a href="../bmi-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">BMI</a>
+                    <a href="../tip-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Tip</a>
+                    <a href="../loan-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Loan</a>
+                    <a href="../discount-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Discount</a>
+                    <a href="../sales-tax-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Tax</a>
+                    <a href="../age-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Age</a>
+                    <a href="../grade-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Grade</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="text-center mb-4">Body Fat Calculator</h1>
+                <p class="text-center text-muted mb-4">Calculate body fat percentage using US Navy method</p>
+
+                <div class="calculator-container">
+                    <form id="bodyFatForm">
+                        <div class="mb-3">
+                            <label for="gender" class="form-label">Gender</label>
+                            <select class="form-select" id="gender" onchange="updateFields()">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="height" class="form-label">Height (inches)</label>
+                            <input type="number" class="form-control" id="height" placeholder="Enter height" step="0.1" min="48">
+                        </div>
+                        <div class="mb-3">
+                            <label for="neck" class="form-label">Neck Circumference (inches)</label>
+                            <input type="number" class="form-control" id="neck" placeholder="Enter neck circumference" step="0.1" min="1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="waist" class="form-label">Waist Circumference (inches)</label>
+                            <input type="number" class="form-control" id="waist" placeholder="Enter waist circumference" step="0.1" min="1">
+                        </div>
+                        <div class="mb-3" id="hipField" style="display: none;">
+                            <label for="hip" class="form-label">Hip Circumference (inches)</label>
+                            <input type="number" class="form-control" id="hip" placeholder="Enter hip circumference" step="0.1" min="1">
+                        </div>
+                        <button type="button" class="btn btn-calculate" onclick="calculateBodyFat()">Calculate Body Fat</button>
+                    </form>
+                    <div id="bodyFatResult" class="result-box" style="display: none;">
+                        <div class="result-value" id="bodyFatPercent"></div>
+                        <p class="text-muted" id="bodyFatCategory"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-10">
+                <div class="bg-light p-5 rounded-3">
+                    <h2 class="h3 mb-4">How to Use the Body Fat Calculator</h2>
+                    <p>Calculate body fat percentage using the US Navy method with simple measurements.</p>
+                    <h3 class="h5 mt-4 mb-3">Instructions</h3>
+                    <ol>
+                        <li>Select your gender</li>
+                        <li>Enter your height in inches</li>
+                        <li>Measure and enter neck circumference</li>
+                        <li>Measure and enter waist circumference</li>
+                        <li>For females: also enter hip circumference</li>
+                    </ol>
+                    <div class="alert alert-info mt-3">
+                        <strong>📏 Measurement Tips:</strong> Take measurements at the same time of day for consistency. Measure neck at narrowest point, waist at navel level, hips at widest point.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 Simple Calculators. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../index.html" class="text-decoration-none me-2">Home</a>
+                    <a href="../percentage-calculator/index.html" class="text-decoration-none me-2">Percentage</a>
+                    <a href="../bmi-calculator/index.html" class="text-decoration-none me-2">BMI</a>
+                    <a href="../tip-calculator/index.html" class="text-decoration-none me-2">Tip</a>
+                    <a href="../loan-calculator/index.html" class="text-decoration-none me-2">Loan</a>
+                    <a href="../discount-calculator/index.html" class="text-decoration-none me-2">Discount</a>
+                    <a href="../currency-converter/index.html" class="text-decoration-none me-2">Currency</a>
+                    <a href="../sales-tax-calculator/index.html" class="text-decoration-none me-2">Tax</a>
+                    <a href="../calorie-calculator/index.html" class="text-decoration-none me-2">Calorie</a>
+                    <a href="../age-calculator/index.html" class="text-decoration-none me-2">Age</a>
+                    <a href="../grade-calculator/index.html" class="text-decoration-none me-2">Grade</a>
+                    <a href="../unit-converter/index.html" class="text-decoration-none me-2">Unit</a>
+                    <a href="../fuel-cost-calculator/index.html" class="text-decoration-none me-2">Fuel</a>
+                    <a href="../compound-interest-calculator/index.html" class="text-decoration-none">Interest</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function updateFields() {
+            const gender = document.getElementById('gender').value;
+            document.getElementById('hipField').style.display = gender === 'female' ? 'block' : 'none';
+        }
+
+        function calculateBodyFat() {
+            const gender = document.getElementById('gender').value;
+            const height = parseFloat(document.getElementById('height').value);
+            const neck = parseFloat(document.getElementById('neck').value);
+            const waist = parseFloat(document.getElementById('waist').value);
+            const hip = parseFloat(document.getElementById('hip').value);
+
+            if (isNaN(height) || isNaN(neck) || isNaN(waist)) {
+                alert('Please enter all measurements.');
+                return;
+            }
+
+            let bodyFat;
+            if (gender === 'male') {
+                bodyFat = 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(height)) - 450;
+            } else {
+                if (isNaN(hip)) {
+                    alert('Please enter hip measurement for females.');
+                    return;
+                }
+                bodyFat = 495 / (1.29579 - 0.35004 * Math.log10(waist + hip - neck) + 0.22100 * Math.log10(height)) - 450;
+            }
+
+            let category = '';
+            if (gender === 'male') {
+                if (bodyFat < 6) category = 'Essential Fat';
+                else if (bodyFat < 14) category = 'Athletes';
+                else if (bodyFat < 18) category = 'Fitness';
+                else if (bodyFat < 25) category = 'Average';
+                else category = 'Obese';
+            } else {
+                if (bodyFat < 14) category = 'Essential Fat';
+                else if (bodyFat < 21) category = 'Athletes';
+                else if (bodyFat < 25) category = 'Fitness';
+                else if (bodyFat < 32) category = 'Average';
+                else category = 'Obese';
+            }
+
+            document.getElementById('bodyFatPercent').textContent = bodyFat.toFixed(1) + '%';
+            document.getElementById('bodyFatCategory').textContent = 'Category: ' + category;
+            document.getElementById('bodyFatResult').style.display = 'block';
+        }
+
+        updateFields();
+    </script>
+</body>
+</html>

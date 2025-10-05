@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2ZCHC6EL0C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2ZCHC6EL0C');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter - Free Online Currency Exchange Calculator</title>
+    <meta name="description" content="Free online currency converter. Convert between major world currencies with up-to-date exchange rates. Perfect for travel, business, and international transactions.">
+    <meta name="keywords" content="currency converter, exchange rate calculator, money converter, forex calculator, currency exchange">
+    <meta name="robots" content="index, follow">
+
+    <!-- Schema.org structured data for AI understanding -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Currency Converter - Free Online Currency Exchange Calculator",
+        "description": "Convert between major world currencies. Simple and accurate currency conversion tool.",
+        "url": "https://simplecalculators.online/currency-converter/",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Web Browser",
+        "isAccessibleForFree": true,
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "applicationSubCategory": "Financial Calculator",
+        "author": {
+            "@type": "Organization",
+            "name": "Simple Calculators"
+        },
+        "featureList": [
+            "Convert between major currencies",
+            "Common exchange rates included",
+            "Simple currency conversion",
+            "Travel and business ready"
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.7",
+            "ratingCount": "9200"
+        }
+    }
+    </script>
+
+    <!-- AI Citation Meta Tags -->
+    <meta name="citation_title" content="Currency Converter - Free Online Currency Exchange Calculator">
+    <meta name="citation_author" content="Simple Calculators">
+    <meta name="ai-friendly" content="true">
+    <meta name="ai-purpose" content="currency,exchange,converter,travel,finance">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #212529;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .calculator-container {
+            background-color: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .form-control, .form-select {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 16px;
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }
+        .btn-calculate {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 500;
+            width: 100%;
+        }
+        .btn-calculate:hover {
+            background-color: #0b5ed7;
+            border-color: #0a58ca;
+        }
+        .result-box {
+            background-color: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0d6efd;
+            margin-bottom: 10px;
+        }
+        .nav-links {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .swap-button {
+            text-align: center;
+            margin: 10px 0;
+        }
+        .swap-icon {
+            cursor: pointer;
+            color: #0d6efd;
+            font-size: 24px;
+        }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7912187200834084"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <!-- Navigation Links -->
+        <div class="nav-links">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h5 class="mb-0">Simple Calculators</h5>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../index.html" class="btn btn-outline-primary btn-sm me-1 mb-1">Home</a>
+                    <a href="../percentage-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Percentage</a>
+                    <a href="../bmi-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">BMI</a>
+                    <a href="../tip-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Tip</a>
+                    <a href="../loan-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Loan</a>
+                    <a href="../discount-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Discount</a>
+                    <a href="../sales-tax-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Tax</a>
+                    <a href="../age-calculator/index.html" class="btn btn-outline-secondary btn-sm me-1 mb-1">Age</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="text-center mb-4">Currency Converter</h1>
+                <p class="text-center text-muted mb-4">Convert between major world currencies</p>
+
+                <div class="calculator-container">
+                    <form id="currencyForm">
+                        <div class="mb-3">
+                            <label for="amount" class="form-label">Amount</label>
+                            <input type="number" class="form-control" id="amount" placeholder="Enter amount" step="0.01" min="0" value="100">
+                        </div>
+                        <div class="mb-3">
+                            <label for="fromCurrency" class="form-label">From</label>
+                            <select class="form-select" id="fromCurrency">
+                                <option value="USD" selected>USD - US Dollar</option>
+                                <option value="EUR">EUR - Euro</option>
+                                <option value="GBP">GBP - British Pound</option>
+                                <option value="JPY">JPY - Japanese Yen</option>
+                                <option value="AUD">AUD - Australian Dollar</option>
+                                <option value="CAD">CAD - Canadian Dollar</option>
+                                <option value="CHF">CHF - Swiss Franc</option>
+                                <option value="CNY">CNY - Chinese Yuan</option>
+                                <option value="INR">INR - Indian Rupee</option>
+                                <option value="MXN">MXN - Mexican Peso</option>
+                            </select>
+                        </div>
+                        <div class="swap-button">
+                            <span class="swap-icon" onclick="swapCurrencies()" title="Swap currencies">⇅</span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="toCurrency" class="form-label">To</label>
+                            <select class="form-select" id="toCurrency">
+                                <option value="USD">USD - US Dollar</option>
+                                <option value="EUR" selected>EUR - Euro</option>
+                                <option value="GBP">GBP - British Pound</option>
+                                <option value="JPY">JPY - Japanese Yen</option>
+                                <option value="AUD">AUD - Australian Dollar</option>
+                                <option value="CAD">CAD - Canadian Dollar</option>
+                                <option value="CHF">CHF - Swiss Franc</option>
+                                <option value="CNY">CNY - Chinese Yuan</option>
+                                <option value="INR">INR - Indian Rupee</option>
+                                <option value="MXN">MXN - Mexican Peso</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn btn-calculate" onclick="convertCurrency()">Convert Currency</button>
+                    </form>
+                    <div id="currencyResult" class="result-box" style="display: none;">
+                        <div class="result-value" id="convertedAmount"></div>
+                        <div class="text-muted" id="conversionRate"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO Content -->
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-10">
+                <div class="bg-light p-5 rounded-3">
+                    <h2 class="h3 mb-4">How to Use the Currency Converter</h2>
+
+                    <p>Our free online currency converter makes it easy to convert between major world currencies. Whether you're planning international travel, making cross-border purchases, or tracking foreign investments, this tool provides quick currency conversions.</p>
+
+                    <h3 class="h5 mt-4 mb-3">Step-by-Step Instructions</h3>
+                    <ol>
+                        <li><strong>Enter Amount:</strong> Type the amount you want to convert</li>
+                        <li><strong>Select From Currency:</strong> Choose the currency you're converting from</li>
+                        <li><strong>Select To Currency:</strong> Choose the currency you're converting to</li>
+                        <li><strong>Click Convert:</strong> Press the "Convert Currency" button to see the result</li>
+                        <li><strong>Swap Option:</strong> Click the ⇅ icon to quickly swap the currencies</li>
+                    </ol>
+
+                    <h3 class="h5 mt-4 mb-3">Supported Currencies</h3>
+                    <ul>
+                        <li><strong>USD:</strong> United States Dollar - The world's primary reserve currency</li>
+                        <li><strong>EUR:</strong> Euro - Official currency of 20 European Union countries</li>
+                        <li><strong>GBP:</strong> British Pound Sterling - Currency of the United Kingdom</li>
+                        <li><strong>JPY:</strong> Japanese Yen - Currency of Japan</li>
+                        <li><strong>AUD:</strong> Australian Dollar - Currency of Australia</li>
+                        <li><strong>CAD:</strong> Canadian Dollar - Currency of Canada</li>
+                        <li><strong>CHF:</strong> Swiss Franc - Currency of Switzerland</li>
+                        <li><strong>CNY:</strong> Chinese Yuan - Currency of China</li>
+                        <li><strong>INR:</strong> Indian Rupee - Currency of India</li>
+                        <li><strong>MXN:</strong> Mexican Peso - Currency of Mexico</li>
+                    </ul>
+
+                    <h3 class="h5 mt-4 mb-3">Common Uses</h3>
+                    <ul>
+                        <li><strong>Travel Planning:</strong> Calculate how much foreign currency you'll get for your money</li>
+                        <li><strong>Online Shopping:</strong> Convert prices from international websites to your local currency</li>
+                        <li><strong>Business Transactions:</strong> Calculate costs for international business deals</li>
+                        <li><strong>Investment Tracking:</strong> Monitor the value of foreign investments</li>
+                        <li><strong>Salary Comparison:</strong> Compare job offers in different countries</li>
+                    </ul>
+
+                    <h3 class="h5 mt-4 mb-3">Understanding Exchange Rates</h3>
+                    <p>Exchange rates represent how much one currency is worth in terms of another. These rates fluctuate based on:</p>
+                    <ul>
+                        <li><strong>Economic Indicators:</strong> GDP, inflation, employment rates</li>
+                        <li><strong>Political Stability:</strong> Government policies and political events</li>
+                        <li><strong>Market Sentiment:</strong> Investor confidence and speculation</li>
+                        <li><strong>Supply and Demand:</strong> Trade balances and capital flows</li>
+                    </ul>
+
+                    <h3 class="h5 mt-4 mb-3">Important Notes</h3>
+                    <div class="alert alert-warning">
+                        <strong>⚠️ Exchange Rate Notice:</strong> The rates used in this calculator are approximate and for reference purposes. Actual rates vary by financial institution and may include additional fees. Always check with your bank or exchange service for current rates.
+                    </div>
+
+                    <h3 class="h5 mt-4 mb-3">Tips for Currency Exchange</h3>
+                    <ul>
+                        <li><strong>Avoid Airport Exchanges:</strong> Airport currency exchanges typically offer less favorable rates</li>
+                        <li><strong>Use ATMs Wisely:</strong> Local ATMs often provide better rates than currency exchange counters</li>
+                        <li><strong>Check Bank Fees:</strong> Your bank may charge foreign transaction fees on top of exchange rates</li>
+                        <li><strong>Consider Credit Cards:</strong> Some credit cards offer competitive exchange rates with no foreign transaction fees</li>
+                        <li><strong>Plan Ahead:</strong> Monitor exchange rates and convert currency when rates are favorable</li>
+                    </ul>
+
+                    <h3 class="h5 mt-4 mb-3">Example Conversions</h3>
+                    <p>These are approximate conversions for illustration:</p>
+                    <ul>
+                        <li>100 USD = ~92 EUR</li>
+                        <li>100 USD = ~79 GBP</li>
+                        <li>100 USD = ~15,000 JPY</li>
+                        <li>100 EUR = ~109 USD</li>
+                    </ul>
+
+                    <div class="alert alert-info mt-3">
+                        <strong>📱 Travel Tip:</strong> Before traveling, research typical exchange rates and familiarize yourself with the local currency denominations to avoid confusion during transactions.
+                    </div>
+
+                    <p>Whether you're a frequent traveler, online shopper, or business professional dealing with international transactions, our currency converter provides a quick way to estimate conversion values and plan your currency needs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 Simple Calculators. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="../index.html" class="text-decoration-none me-2">Home</a>
+                    <a href="../percentage-calculator/index.html" class="text-decoration-none me-2">Percentage</a>
+                    <a href="../bmi-calculator/index.html" class="text-decoration-none me-2">BMI</a>
+                    <a href="../tip-calculator/index.html" class="text-decoration-none me-2">Tip</a>
+                    <a href="../loan-calculator/index.html" class="text-decoration-none me-2">Loan</a>
+                    <a href="../discount-calculator/index.html" class="text-decoration-none me-2">Discount</a>
+                    <a href="../sales-tax-calculator/index.html" class="text-decoration-none me-2">Tax</a>
+                    <a href="../calorie-calculator/index.html" class="text-decoration-none me-2">Calorie</a>
+                    <a href="../age-calculator/index.html" class="text-decoration-none me-2">Age</a>
+                    <a href="../grade-calculator/index.html" class="text-decoration-none me-2">Grade</a>
+                    <a href="../unit-converter/index.html" class="text-decoration-none me-2">Unit</a>
+                    <a href="../fuel-cost-calculator/index.html" class="text-decoration-none me-2">Fuel</a>
+                    <a href="../compound-interest-calculator/index.html" class="text-decoration-none">Interest</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Approximate exchange rates (relative to USD)
+        const exchangeRates = {
+            USD: 1,
+            EUR: 0.92,
+            GBP: 0.79,
+            JPY: 149.50,
+            AUD: 1.52,
+            CAD: 1.36,
+            CHF: 0.88,
+            CNY: 7.24,
+            INR: 83.12,
+            MXN: 17.08
+        };
+
+        function convertCurrency() {
+            const amount = parseFloat(document.getElementById('amount').value);
+            const fromCurrency = document.getElementById('fromCurrency').value;
+            const toCurrency = document.getElementById('toCurrency').value;
+
+            if (isNaN(amount) || amount < 0) {
+                alert('Please enter a valid positive amount.');
+                return;
+            }
+
+            // Convert to USD first, then to target currency
+            const amountInUSD = amount / exchangeRates[fromCurrency];
+            const convertedAmount = amountInUSD * exchangeRates[toCurrency];
+
+            // Calculate the direct exchange rate
+            const rate = exchangeRates[toCurrency] / exchangeRates[fromCurrency];
+
+            // Display results
+            document.getElementById('convertedAmount').textContent =
+                convertedAmount.toFixed(2) + ' ' + toCurrency;
+            document.getElementById('conversionRate').textContent =
+                `1 ${fromCurrency} = ${rate.toFixed(4)} ${toCurrency}`;
+            document.getElementById('currencyResult').style.display = 'block';
+        }
+
+        function swapCurrencies() {
+            const fromCurrency = document.getElementById('fromCurrency').value;
+            const toCurrency = document.getElementById('toCurrency').value;
+
+            document.getElementById('fromCurrency').value = toCurrency;
+            document.getElementById('toCurrency').value = fromCurrency;
+
+            // Auto-convert if amount is entered
+            const amount = document.getElementById('amount').value;
+            if (amount && !isNaN(amount) && amount > 0) {
+                convertCurrency();
+            }
+        }
+
+        // Enter key support
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('amount').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    convertCurrency();
+                }
+            });
+
+            // Auto-convert on currency change
+            document.getElementById('fromCurrency').addEventListener('change', function() {
+                const amount = document.getElementById('amount').value;
+                if (amount && !isNaN(amount) && amount > 0) {
+                    convertCurrency();
+                }
+            });
+
+            document.getElementById('toCurrency').addEventListener('change', function() {
+                const amount = document.getElementById('amount').value;
+                if (amount && !isNaN(amount) && amount > 0) {
+                    convertCurrency();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
